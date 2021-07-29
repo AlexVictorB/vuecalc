@@ -1,28 +1,87 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <Calc/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Calc from './components/Calc'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Calc
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.fundo {
+    background-image: linear-gradient(45deg, #3ba392, #89f2fa);
+    height: 100vh;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.calc {
+    position: absolute;
+    background-color: rgba(100, 100, 100, 0.6);
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.option-bar {
+    position: fixed;
+    background-color: rgba(100, 100, 100, 0.6);
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 4rem;
+    /*width: 30rem;*/
+    border-radius: 2rem 2rem 0 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.option-bar img {
+    cursor: pointer;
+    margin: .5rem 0.5rem 1rem 0.5rem;
+}
+
+.option-bar img:hover {
+    opacity: 60%;
+    transition-property: opacity, left, top, height;
+    transition-duration: 1s, 8s;
+   
+}
+
+
+@media(min-width: 800px){
+
+    html{
+        font-size: 80;
+
+    }
+
+    .calc {
+        position: absolute;
+        background-color: rgba(100, 100, 100, 0.6);
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        padding: 5px;
+    }
+
 }
 </style>
