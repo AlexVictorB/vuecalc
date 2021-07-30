@@ -1,0 +1,53 @@
+.calc {
+    padding: 2rem 2rem 3rem 2rem;
+}
+
+table {
+    display: flex;
+}
+
+.button-func {
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    margin: 0.05rem;
+    border-radius: 5px;
+    color: #3ba392;
+    font-family: 'Staatliches', cursive;
+    font-size: 25px;
+    cursor: pointer;
+    background-color: #C7C5C9;
+    outline: none;
+}
+
+.button-func:hover {
+    opacity: 50%;
+}
+
+
+#result {
+    background-color: white;
+    width: 200px;
+    height: 30px;
+    margin: 5px;
+    color: rgb(105, 99, 99);
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: right;
+    padding: 5px;
+    outline: none;
+}
+
+#display {
+    background-color: white;
+    width: 195px;
+    height: 2.5rem;
+    margin: 5px;
+    color: rgb(105, 99, 99);
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: right;
+    padding: 5px;
+    border: none;
+    outline: none;
+}

@@ -1,14 +1,16 @@
 <template>
-  <Calc/>
+  <Convert/>
 </template>
 
 <script>
-import Calc from './components/Calc'
+//import Calc from './components/Calc'
+import Convert from './components/Convert.vue'
 
 export default {
   name: 'App',
   components: {
-    Calc
+    //Calc,
+    Convert
   }
 }
 </script>
