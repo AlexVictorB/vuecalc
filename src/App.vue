@@ -1,27 +1,30 @@
 <template>
-  <Convert/>
+    <div id="app">
+        <router-view/>
+        <Menu/>
+    </div>
 </template>
 
 <script>
 //import Calc from './components/Calc'
-import Convert from './components/Convert.vue'
+import Menu from './components/Menu.vue'
 
 export default {
   name: 'App',
   components: {
-    //Calc,
-    Convert
+      Menu
   }
 }
 </script>
 
-<style>
+<style> 
 * {
     margin: 0;
     padding: 0;
 }
 
-.fundo {
+.fundo,
+#app {
     background-image: linear-gradient(45deg, #3ba392, #89f2fa);
     height: 100vh;
     color: white;

@@ -3,30 +3,22 @@
         <div class="calc">
             <h1>Coin JS</h1>
             <div class="convert-options">
-                <button class="button-option" onclick="realToUsd()">Real / Dolar</button>
-                <button class="button-option" onclick="usdToReal()">Dolar / Real</button>
-                <button class="button-option" onclick="btcToReal()">Bitcoin / Real</button>
-                <button class="button-option" onclick="realToBtc()">Real / Bitcoin</button>
+                <button class="button-option" v-on:click="realToUsd()">Real / Dolar</button>
+                <button class="button-option" v-on:click="usdToReal()">Dolar / Real</button>
+                <button class="button-option" v-on:click="btcToReal()">Bitcoin / Real</button>
+                <button class="button-option" v-on:click="realToBtc()">Real / Bitcoin</button>
             </div>
             <div class="convert-form">
                 <div>
                     <p id="input-display">Real</p>
                     <input type="text" value="1,00" id="input-value">
                 </div>
-                <button class="button-convert" v-on:click="convertButton()">Converter</button>
+                <button class="button-convert" id="button-convert" v-on:click="convertButton()">Converter</button>
                 <div>
                     <p id="output-display">Dolar</p>
                     <input type="text" id="output-value">
                 </div>
             </div>
-
-        </div>
-        <!--Barra de navegação-->
-        <div class="option-bar">
-            <a href="/index.html"><img src="/images/calc.svg" alt="Calculadora" width="50px"></a>
-            <a href="/coinJS.html"><img src="/images/dolar.svg" alt="Conversor" width="50px"></a>
-            <a href="/degree.html"><img src="/images/temp.svg" alt="temperatura" width="50px"></a>
-            <a href="/imc.html"><img src="/images/imc.svg" alt="Conversor" width="50px"></a>
 
         </div>
     </div>
@@ -41,147 +33,137 @@ export default {
             mode: "RtoU",
             btn: document.getElementsByClassName("button-convert")     
         }
-        
-
-        
-
     },
 
-    mounted () {
-        
-      
+    created (){},
+    mounted (){},
 
-    },
     methods: {
 
-    //API de cotações
-   
+        convertButton: function () {
+            if(this.mode == "RtoU") {
+                this.realToUsd()
+            }
 
-    getValue: function(url) {
-        let request = new XMLHttpRequest()
-        request.open("GET", url, false)
-        request.send()
+            if(this.mode == "UtoR") {
+                this.usdToReal()
+            }
 
+            if(this.mode == "BtoR") {
+                this.btcToReal()
+            }
 
-        return request.responseText
-    },
-
-    //Definir modo de operação do conversor - padrão RtoU
-    convertButton: function () {
-        if(mode == "RtoU") {
-            realToUsd()
-        }
-
-        if(mode == "UtoR") {
-            usdToReal()
-        }
-
-        if(mode == "BtoR") {
-            btcToReal()
-        }
-
-        if(mode == "RtoB") {
-            realToBtc()
-        }
-    },
-
-    realToUsd: function () {
-        let jsonValues = JSON.parse(getValue(url))
-        let jsonUsd = jsonValues["USDBRL"]
-
-        mode = "RtoU"
-
-        document.getElementById("input-display").innerHTML = "Real"
-        document.getElementById("output-display").innerHTML = "Dolar"
-        
-
-        const dolarValue = parseFloat(jsonUsd["bid"])
-
-        let realValue = document.getElementById("input-value").value
-
-        let conversionResult = parseFloat(realValue).toFixed(2) * dolarValue
-
-        document.getElementById("output-value").value = conversionResult.toLocaleString('en-IN', { style: 'currency', currency: 'USD' });
-
-        return conversionResult
-    },
-
-    usdToReal: function () {
-        let jsonValues = JSON.parse(getValue(url))
-        let jsonUsd = jsonValues["USDBRL"]
-
-        mode = "UtoR"
-
-        document.getElementById("input-display").innerHTML = "Dolar"
-        document.getElementById("output-display").innerHTML = "Real"
-        
-
-        const dolarValue = parseFloat(jsonUsd["bid"])
-
-        let realValue = document.getElementById("input-value").value
-
-        let conversionResult = parseFloat(realValue).toFixed(2) / dolarValue
+            if(this.mode == "RtoB") {
+                this.realToBtc()
+            }
 
 
-        document.getElementById("output-value").value = conversionResult.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        },
 
-        return conversionResult
-    },
+        getValue: function (url) {
+            let request = new XMLHttpRequest()
+            request.open("GET", url, false)
+            request.send()
 
-    btcToReal: function () {
+            return request.responseText
+        },
 
-        let jsonValues = JSON.parse(getValue(url))
-        let jsonUsd = jsonValues["BTCBRL"]
+        realToUsd: function () {
 
-        mode = "BtoR"
+            let jsonValues = JSON.parse(this.getValue(this.url))
+            let jsonUsd = jsonValues["USDBRL"]
 
-        document.getElementById("input-display").innerHTML = "Bitcoin"
-        document.getElementById("output-display").innerHTML = "Real"
-        
+            this.mode = "RtoU"
 
-        const dolarValue = parseFloat(jsonUsd["bid"])
+            document.getElementById("input-display").innerHTML = "Real"
+            document.getElementById("output-display").innerHTML = "Dolar"
+            
 
-        let realValue = document.getElementById("input-value").value
+            const dolarValue = parseFloat(jsonUsd["bid"])
 
-        let conversionResult = parseFloat(realValue).toFixed(4) * dolarValue
+            let realValue = document.getElementById("input-value").value
 
-        document.getElementById("output-value").value = `R$ ${conversionResult},00`//conversionResult.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            let conversionResult = parseFloat(realValue).toFixed(2) / dolarValue
 
-        return conversionResult
+            document.getElementById("output-value").value = conversionResult.toLocaleString('en-IN', { style: 'currency', currency: 'USD' });
 
-    },
+            return conversionResult
+        },
 
-    realToBtc: function () {
+        usdToReal: function () {
+            let jsonValues = JSON.parse(this.getValue(this.url))
+            let jsonUsd = jsonValues["USDBRL"]
 
-        let jsonValues = JSON.parse(getValue(url))
-        let jsonUsd = jsonValues["BTCBRL"]
+            this.mode = "UtoR"
 
-        mode = "RtoB"
+            document.getElementById("input-display").innerHTML = "Dolar"
+            document.getElementById("output-display").innerHTML = "Real"
+            
 
-        document.getElementById("input-display").innerHTML = "Real"
-        document.getElementById("output-display").innerHTML = "Bitcoin"
-        
+            const dolarValue = parseFloat(jsonUsd["bid"])
 
-        const dolarValue = parseFloat(jsonUsd["bid"])
+            let realValue = document.getElementById("input-value").value
 
-        let realValue = document.getElementById("input-value").value
+            let conversionResult = parseFloat(realValue).toFixed(2) * dolarValue
 
-        let conversionResult = parseFloat(realValue).toFixed(2) / dolarValue.toFixed(7)
+            document.getElementById("output-value").value = conversionResult.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-        document.getElementById("output-value").value = conversionResult.toFixed(7) //conversionResult.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            return conversionResult
+        },
 
-        return conversionResult
-    },
+        btcToReal: function () {
 
+            let jsonValues = JSON.parse(this.getValue(this.url))
+            let jsonUsd = jsonValues["BTCBRL"]
+
+            this.mode = "BtoR"
+
+            document.getElementById("input-display").innerHTML = "Bitcoin"
+            document.getElementById("output-display").innerHTML = "Real"
+            
+
+            const dolarValue = parseFloat(jsonUsd["bid"])
+
+            let realValue = document.getElementById("input-value").value
+
+            let conversionResult = parseFloat(realValue).toFixed(4) * dolarValue
+
+            document.getElementById("output-value").value = `R$ ${conversionResult},00`//conversionResult.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            return conversionResult
+
+        },
+
+        realToBtc: function () {
+            let jsonValues = JSON.parse(this.getValue(this.url))
+            let jsonUsd = jsonValues["BTCBRL"]
+
+            this.mode = "RtoB"
+
+            document.getElementById("input-display").innerHTML = "Real"
+            document.getElementById("output-display").innerHTML = "Bitcoin"
+            
+
+            const dolarValue = parseFloat(jsonUsd["bid"])
+
+            let realValue = document.getElementById("input-value").value
+
+            let conversionResult = parseFloat(realValue).toFixed(2) / dolarValue.toFixed(7)
+
+
+            document.getElementById("output-value").value = conversionResult.toFixed(7) //conversionResult.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            return conversionResult
+        },
 
     }
 
 }
 </script>
 
-<style>
+<style scoped>
 .calc {
-    padding: 2rem 0.5rem 6rem 0.5rem !important;
+    padding: 2rem 0.5rem 6rem 0.5rem;
 }
 
 

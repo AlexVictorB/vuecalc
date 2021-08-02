@@ -34,15 +34,6 @@
                     </tr>
                 </table>
             </div>
-        
-
-<!--Barra de navegação-->
-            <div class="option-bar">
-                <a href="/index.html"><img src="../assets/calc.svg" alt="Calculadora" width="50px"></a>
-                <a href="/coinJS.html"><img src="../assets/dolar.svg" alt="Conversor" width="50px"></a>
-                <a href="/degree.html"><img src="../assets/temp.svg" alt="temperatura" width="50px"></a>
-                <a href="/imc.html"><img src="../assets/imc.svg" alt="Conversor" width="50px"></a>
-            </div>
         </div>
 
 </template>
@@ -156,9 +147,9 @@
     document.addEventListener('keydown', keyboardMap)
 </script>
 
-<style>
+<style scoped>
 .calc {
-    padding: 2rem 2rem 3rem 2rem !important;
+    padding: 2rem 2rem 3rem 2rem;
 }
 
 table {
