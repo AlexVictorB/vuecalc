@@ -199,11 +199,11 @@ export default {
 }
 
 .button-option:hover {
-    opacity: 50;
+    opacity: 0.5;
 }
 
 .button-convert:hover {
-    opacity: 50;
+    opacity: 0.5;
 }
 
 .convert-form {
