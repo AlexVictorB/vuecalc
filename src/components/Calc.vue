@@ -171,7 +171,7 @@ table {
 }
 
 .button-func:hover {
-    opacity: 50%;
+    opacity: 100;
 }
 
 
