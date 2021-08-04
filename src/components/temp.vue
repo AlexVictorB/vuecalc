@@ -150,11 +150,11 @@
     }
 
     .button-option:hover {
-        opacity: 100;
+        opacity: 100%;
     }
 
     .button-convert:hover {
-        opacity: 100;
+        opacity: 100%;
     }
 
     .convert-form {

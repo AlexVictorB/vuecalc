@@ -29,7 +29,7 @@ export default {
     name: 'Convert',
     data: function () {
         return{
-            url:" http://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL",
+            url:" https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL",
             mode: "RtoU",
             btn: document.getElementsByClassName("button-convert")     
         }
@@ -199,11 +199,11 @@ export default {
 }
 
 .button-option:hover {
-    opacity: 100;
+    opacity: 100%;
 }
 
 .button-convert:hover {
-    opacity: 100;
+    opacity: 100%;
 }
 
 .convert-form {
