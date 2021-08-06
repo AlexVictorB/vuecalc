@@ -43,7 +43,7 @@
 }
 
 .option-bar img:hover {
-    opacity: 0.5;
+    opacity: 1;
     transition-property: opacity, left, top, height;
     transition-duration: 1s, 8s;
    
