@@ -6,7 +6,6 @@
 </template>
 
 <script>
-//import Calc from './components/Calc'
 import Menu from './components/Menu.vue'
 
 export default {
