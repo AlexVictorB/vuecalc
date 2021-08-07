@@ -29,7 +29,7 @@
                         <td rowspan="2"><button class="button-func" style="height: 106px;" v-on:click="calc()">=</button></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><button class="button-func" style="width: 106px;">0</button></td>
+                        <td colspan="2"><button class="button-func" style="width: 106px;" v-n:click="insert('0')">0</button></td>
                         <td><button class="button-func" v-on:click="insert('.')">.</button></td>
                     </tr>
                 </table>
